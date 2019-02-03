@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>613</width>
+    <height>583</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Video Processor</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0" rowspan="2">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QGraphicsView" name="graphicsView_2">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="backgroundBrush">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>65</red>
+             <green>65</green>
+             <blue>65</blue>
+            </color>
+           </brush>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGraphicsView" name="graphicsView"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QGraphicsView" name="graphicsView_3"/>
+        </item>
+        <item>
+         <widget class="QGraphicsView" name="graphicsView_4"/>
+        </item>
+        <item>
+         <widget class="QGraphicsView" name="graphicsView_5"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="startBtn">
+        <property name="text">
+         <string>Start</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>613</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuVideo">
+    <property name="title">
+     <string>Video</string>
+    </property>
+    <addaction name="actionStart"/>
+    <addaction name="actionStop"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionGreen_Mask"/>
+    <addaction name="actionBlue_Mask"/>
+    <addaction name="actionRed_Mask"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionMorph"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuPainting">
+    <property name="title">
+     <string>Painting</string>
+    </property>
+    <addaction name="actionStart_Stop"/>
+    <addaction name="actionStart_Painting"/>
+    <addaction name="separator"/>
+    <addaction name="actionBrush_Size_1"/>
+    <addaction name="actionBrush_Size_3"/>
+    <addaction name="actionBrush_Size_10"/>
+    <addaction name="separator"/>
+    <addaction name="actionEraser_Size_6"/>
+    <addaction name="actionEraser_Size_10"/>
+    <addaction name="actionEraser_Size_15"/>
+   </widget>
+   <addaction name="menuVideo"/>
+   <addaction name="menuPainting"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menuAbout"/>
+  </widget>
+  <action name="actionStart">
+   <property name="text">
+    <string>Start</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="text">
+    <string>Stop</string>
+   </property>
+  </action>
+  <action name="actionColor_Detection">
+   <property name="text">
+    <string>Blue Mask</string>
+   </property>
+  </action>
+  <action name="actionStart_Painting">
+   <property name="text">
+    <string>New Paint</string>
+   </property>
+  </action>
+  <action name="actionGreen_Mask">
+   <property name="text">
+    <string>Green Mask</string>
+   </property>
+  </action>
+  <action name="actionBlue_Mask">
+   <property name="text">
+    <string>Blue Mask</string>
+   </property>
+  </action>
+  <action name="actionRed_Mask">
+   <property name="text">
+    <string>Red Mask</string>
+   </property>
+  </action>
+  <action name="actionMorph">
+   <property name="text">
+    <string>Morph</string>
+   </property>
+  </action>
+  <action name="actionBrush_Size_1">
+   <property name="text">
+    <string>Brush Size 1%</string>
+   </property>
+  </action>
+  <action name="actionBrush_Size_3">
+   <property name="text">
+    <string>Brush Size 3%</string>
+   </property>
+  </action>
+  <action name="actionBrush_Size_10">
+   <property name="text">
+    <string>Brush Size 10%</string>
+   </property>
+  </action>
+  <action name="actionEraser_Size_5">
+   <property name="text">
+    <string>Eraser Size 5%</string>
+   </property>
+  </action>
+  <action name="actionEraser_Size_6">
+   <property name="text">
+    <string>Eraser Size 5%</string>
+   </property>
+  </action>
+  <action name="actionEraser_Size_10">
+   <property name="text">
+    <string>Eraser Size 10%</string>
+   </property>
+  </action>
+  <action name="actionEraser_Size_15">
+   <property name="text">
+    <string>Eraser Size 15%</string>
+   </property>
+  </action>
+  <action name="actionStart_Stop">
+   <property name="text">
+    <string>Start / Stop</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
