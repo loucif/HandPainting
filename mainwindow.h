@@ -8,6 +8,7 @@
 #include <QPixmap>
 #include <QCloseEvent>
 #include <QMessageBox>
+
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -40,6 +41,8 @@ protected:
 
 private slots:
     void on_startBtn_pressed();
+	void on_actionStart_triggered();
+	void on_actionStop_triggered();
     void on_actionBlue_Mask_triggered();
 	void on_actionGreen_Mask_triggered();
 	void on_actionRed_Mask_triggered();
@@ -60,12 +63,10 @@ private:
 	QGraphicsPixmapItem pixmap_2;
 	QGraphicsPixmapItem pixmap_3;
 	QGraphicsPixmapItem pixmap_4;
-	Mat getBlueObject(Mat frame);
-	Mat getGreenObject(Mat frame);
-	Mat getRedObject(Mat frame);
 	Mat getObjectByColor(Mat frame,QString color);
 	static void morphOps(Mat & thresh);
 	void trackObject(int & x, int & y, Mat frame, Mat & cameraFeed, Scalar color);
+	void trackObject_Version_2(int &x, int &y, Mat threshold, Mat &cameraFeed, Scalar color);
 	double distanceCalculate(double x1, double y1, double x2, double y2);
 	DialogColorGreen *dialogColorGreen;
 	DialogColorBlue *dialogColorBlue;

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HandPainting", "VideoProcessor.vcxproj", "{EF94DFAF-0B0E-3A36-B1A4-CA121D9B559F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HandPainting", "HandPainting.vcxproj", "{EF94DFAF-0B0E-3A36-B1A4-CA121D9B559F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {653B3945-D081-4CCB-88AD-5A4D0BF60B51}
+		SolutionGuid = {7CC67C96-1828-4282-8945-E80CAEB42030}
 	EndGlobalSection
 EndGlobal

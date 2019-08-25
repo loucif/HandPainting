@@ -61,7 +61,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>MAx</string>
+    <string>MAX</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
@@ -74,7 +74,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>MAx</string>
+    <string>MAX</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -241,7 +241,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>MAx</string>
+    <string>MAX</string>
    </property>
   </widget>
  </widget>

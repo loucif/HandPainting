@@ -113,15 +113,15 @@ public:
     void retranslateUi(QDialog *DialogColorGlobal)
     {
         DialogColorGlobal->setWindowTitle(QApplication::translate("DialogColorGlobal", "DialogColorGlobal", nullptr));
-        label_2->setText(QApplication::translate("DialogColorGlobal", "MAx", nullptr));
-        label_7->setText(QApplication::translate("DialogColorGlobal", "MAx", nullptr));
+        label_2->setText(QApplication::translate("DialogColorGlobal", "MAX", nullptr));
+        label_7->setText(QApplication::translate("DialogColorGlobal", "MAX", nullptr));
         label->setText(QApplication::translate("DialogColorGlobal", "MIN", nullptr));
         label_3->setText(QApplication::translate("DialogColorGlobal", "H", nullptr));
         label_9->setText(QApplication::translate("DialogColorGlobal", "V", nullptr));
         label_8->setText(QApplication::translate("DialogColorGlobal", "MIN", nullptr));
         label_5->setText(QApplication::translate("DialogColorGlobal", "MIN", nullptr));
         label_6->setText(QApplication::translate("DialogColorGlobal", "S", nullptr));
-        label_4->setText(QApplication::translate("DialogColorGlobal", "MAx", nullptr));
+        label_4->setText(QApplication::translate("DialogColorGlobal", "MAX", nullptr));
     } // retranslateUi
 
 };

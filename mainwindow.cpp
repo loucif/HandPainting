@@ -70,7 +70,12 @@ void MainWindow::on_startBtn_pressed() {
 
 				trackObject(x_b, y_b, frame_blue, frame, Scalar(255, 0, 0));
 				trackObject(x_g, y_g, frame_green, frame, Scalar(0, 255, 0));
-				trackObject(x_r, y_r, frame_red, frame, Scalar(0, 0, 255));
+				//trackObject(x_r, y_r, frame_red, frame, Scalar(0, 0, 255)); 
+				
+				//trackObject_Version_2(x_b, y_b, frame_blue, frame, Scalar(255, 0, 0)); Or second approach by using moments
+				//trackObject_Version_2(x_g, y_g, frame_green, frame, Scalar(0, 255, 0));
+				trackObject_Version_2(x_r, y_r, frame_red, frame, Scalar(0, 0, 255));
+
 
 				if (distanceCalculate(x_b, y_b, x_r, y_r) <= global.distanceseuil) 
 					circle(frame_painting, Point(x_b, y_b), global.brash_size, Scalar(255, 255, 255), CV_FILLED, 8, 0);
@@ -144,6 +149,7 @@ Mat MainWindow::getObjectByColor(Mat frame, QString color) {
 }
 
 void MainWindow::morphOps(Mat &thresh) {
+	
 	Mat erodeElement = getStructuringElement(MORPH_RECT, Size(3, 3));
 	Mat dilateElement = getStructuringElement(MORPH_RECT, Size(8, 8));
 	
@@ -154,6 +160,7 @@ void MainWindow::morphOps(Mat &thresh) {
 }
 
 void MainWindow::trackObject(int &x, int &y, Mat frame, Mat &cameraFeed, Scalar color) {
+	
 	int x_t = 0, y_t = 0, x_b = 0, y_b = 0, x_l = 0, y_l = 0, x_r = 0, y_r = 0;
 	bool bl = true;
 
@@ -221,32 +228,87 @@ void MainWindow::trackObject(int &x, int &y, Mat frame, Mat &cameraFeed, Scalar 
 	}
 }
 
+void MainWindow::trackObject_Version_2(int &x, int &y, Mat threshold, Mat &cameraFeed, Scalar color) {
+	
+	Mat temp;
+	threshold.copyTo(temp);
+	double ref_area = 0;
+	bool object_found = false;
+	vector<Vec4i> hierarchy;
+	vector< vector<Point> > contours;
+
+	findContours(temp, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+	
+	if (hierarchy.size() > 0) {
+
+		int num_objects = hierarchy.size();
+
+		if (num_objects < global.MAX_NUM_OBJECTS) {
+			for (int index = 0; index >= 0; index = hierarchy[index][0]) {
+
+				Moments moment = moments((cv::Mat)contours[index]);
+				double area = moment.m00;
+
+				if (area > global.MIN_OBJECT_AREA && area < global.MAX_OBJECT_AREA && area > ref_area) {
+					x = moment.m10 / area;
+					y = moment.m01 / area;
+					object_found = true;
+					ref_area = area;
+				}
+				else object_found = false;
+			}
+			if (object_found == true) {
+				circle(cameraFeed, Point(x, y), 20, color, CV_FILLED, 2);
+				putText(cameraFeed, to_string(x) + " - " + to_string(y), Point(x, y + 30), 1, 1, color, 2);
+			}
+		}
+	}
+}
+
 double MainWindow::distanceCalculate(double x1, double y1, double x2, double y2) { return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2)); }
 
+void MainWindow::on_actionStart_triggered() {
+	
+	MainWindow::on_startBtn_pressed();
+}
+void MainWindow::on_actionStop_triggered() {
+	
+	if (video.isOpened()) {
+		ui->startBtn->setText("Start");
+		video.release();
+		return;
+	}
+}
+
 void MainWindow::on_actionBlue_Mask_triggered() {
+
 	dialogColorBlue = new DialogColorBlue(this);
 	dialogColorBlue->setWindowTitle("Blue Color");
 	dialogColorBlue->show();
 }
 
 void MainWindow::on_actionGreen_Mask_triggered() {
+
 	dialogColorGreen = new DialogColorGreen(this);
 	dialogColorGreen->setWindowTitle("Green Color");
 	dialogColorGreen->show();
 }
 
 void MainWindow::on_actionRed_Mask_triggered() {
+
 	dialogColorRed = new DialogColorRed(this);
 	dialogColorRed->setWindowTitle("Red Color");
 	dialogColorRed->show();
 }
 
 void MainWindow::on_actionStart_Painting_triggered() {
+
 	if (global.new_paint) { global.new_paint = false; }
 	else { global.new_paint = true; }
 }
 
 void MainWindow::on_actionStart_Stop_triggered() {
+
 	if (global.startstop) { global.startstop = false; }
 	else { global.startstop = true; }
 }
